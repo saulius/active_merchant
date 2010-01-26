@@ -1,4 +1,5 @@
-require_library_or_gem 'action_pack'
+require 'rubygems'
+gem 'activesupport', :version => "<= 1.4.4"
 
 module ActiveMerchant #:nodoc:
   module Billing #:nodoc:
@@ -44,11 +45,7 @@ module ActiveMerchant #:nodoc:
 
           integration_module = ActiveMerchant::Billing::Integrations.const_get(options.delete(:service).to_s.classify)
 
-          if ignore_binding?
-            concat(form_tag(integration_module.service_url, options.delete(:html) || {}))
-          else
-            concat(form_tag(integration_module.service_url, options.delete(:html) || {}), proc.binding)
-          end
+          concat(form_tag(integration_module.service_url, options.delete(:html) || {}), proc.binding)
           result = "\n"
           
           service_class = integration_module.const_get('Helper')
@@ -62,11 +59,7 @@ module ActiveMerchant #:nodoc:
           result << "\n"
           result << '</form>' 
 
-          if ignore_binding?
-            concat(result)
-          else
-            concat(result, proc.binding)
-          end
+          concat(result, proc.binding)
         end
         
         private

@@ -24,13 +24,12 @@
 $:.unshift File.dirname(__FILE__)
 
 # Include rails' active support for all the core extensions we love
-begin
-  require 'active_support'
-rescue LoadError
-  require 'rubygems'
-  gem 'activesupport', ">=2.0.0"
-  require 'active_support'
-end
+require 'rubygems'
+gem 'actionpack', "<= 1.13.6"
+require 'activesupport_fixes/delegating_attributes'
+require 'active_support'
+require 'action_controller'
+require 'action_view'
 
 begin
   require 'builder'
