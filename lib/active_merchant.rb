@@ -1,5 +1,5 @@
 #--
-# Copyright (c) 2005-2007 Tobias Luetke
+# Copyright (c) 2005-2010 Tobias Luetke
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the
@@ -40,6 +40,7 @@ end
 
 require 'cgi'
 require 'rexml/document'
+
 require 'active_merchant/lib/utils'
 require 'active_merchant/lib/error'
 require 'active_merchant/lib/validateable'
@@ -49,17 +50,10 @@ require 'active_merchant/lib/post_data'
 require 'active_merchant/lib/requires_parameters'
 require 'active_merchant/lib/country'
 
-require 'active_merchant/billing/avs_result'
-require 'active_merchant/billing/cvv_result'
-require 'active_merchant/billing/credit_card_methods'
-require 'active_merchant/billing/credit_card_formatting'
-require 'active_merchant/billing/credit_card'
-require 'active_merchant/billing/base'
-require 'active_merchant/billing/check'
-require 'active_merchant/billing/gateways'
+require 'active_merchant/billing'
 
 module ActiveMerchant #:nodoc:
   module Billing #:nodoc:    
-    autoload :Integrations, 'active_merchant/billing/integrations'    
+    autoload :Integrations, 'active_merchant/billing/integrations'
   end
 end
